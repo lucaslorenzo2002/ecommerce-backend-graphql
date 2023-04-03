@@ -1,0 +1,28 @@
+<a href="/api/crearproducto">Crear un producto</a>
+<a href="/api/carrito">ir al carrito</a>
+<a href="/api/datos">Mis datos</a>
+<button onclick="location.href='/api/auth/logout'">logout</button>
+
+<div>
+    <table>
+        <tr> 
+            <th>nombre</th><th>precio</th> 
+    {{#each productos}}
+        <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            <form action="/api/agregaralcarrito/{{this._id}}" method="post">
+            <td><input type="submit" value="agregar al carrito"></td>
+            </form>
+            <form action="/api/actualizarproducto/{{this._id}}" method="get">
+            <td><button>editar</button></td>
+            </form>
+            <form action="/api/eliminarproducto/{{this._id}}?_method=DELETE" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <td><button>eliminar</button></td>
+            </form>
+        </tr>    
+    {{/each}} 
+        </tr> 
+    </table>
+</div>  

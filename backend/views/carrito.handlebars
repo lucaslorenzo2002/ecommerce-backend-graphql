@@ -1,0 +1,29 @@
+<button onclick="location.href='/api/productos'">Inicio</button>
+
+<h1>aca va el carrito</h1>
+
+{{#if productosEnCarrito}}
+
+<div>
+    <table>
+        <tr> 
+            <th>nombre</th><th>precio</th>
+    {{#each productosCarrito}}
+        <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            <form action="/api/eliminardelcarrito/{{this._id}}" method="post">
+            <td><button type="submit">eliminar</button></td>
+            </form>
+        </tr>    
+    {{/each}} 
+        </tr> 
+    </table>
+    <h5>Subtotal: ${{subtotal}}</h5>
+    <form action="/api/confirmarcompra" method="post">
+    <button type="submit">confirmar compra</button>
+    </form>
+</div>   
+{{else}}
+    <h3>carrito vacio</h3>
+{{/if}}

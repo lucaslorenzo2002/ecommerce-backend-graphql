@@ -1,0 +1,20 @@
+<a href="/api/carrito">Ir al carrito</a>
+<a href="/api/datos">Mis datos</a>
+<button onclick="location.href='/api/auth/logout'">logout</button>
+
+<div>
+    <table>
+        <tr> 
+            <th>nombre</th><th>precio</th>
+    {{#each productos}}
+        <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            <form action="/api/agregaralcarrito/{{this._id}}" method="post">
+            <td><input type="submit" value="agregar al carrito"></td>
+            </form>
+        </tr>    
+    {{/each}} 
+        </tr> 
+    </table>
+</div>  
